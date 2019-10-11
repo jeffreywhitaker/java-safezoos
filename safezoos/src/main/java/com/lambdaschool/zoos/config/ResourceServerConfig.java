@@ -39,8 +39,10 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter
             //
             // restrict based on HttpMethod and endpoint
             // .antMatchers(HttpMethod.GET, "/users/user/**").hasAnyRole("USER")
-            .antMatchers("/roles/**")
-            .hasAnyRole("ADMIN")
+            .antMatchers("/admin/**").hasAnyRole("ADMIN")
+            .antMatchers("/zoos/**").hasAnyRole("ADMIN", "ZOODATA", "MGR")
+            .antMatchers("/animals/**").hasAnyRole("ADMIN", "ANIMALDATA", "MGR")
+            .antMatchers("/roles/**").hasAnyRole("ADMIN")
             .and()
             .exceptionHandling()
             .accessDeniedHandler(new OAuth2AccessDeniedHandler());

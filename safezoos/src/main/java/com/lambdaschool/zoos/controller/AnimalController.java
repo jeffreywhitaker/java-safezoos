@@ -37,6 +37,6 @@ public class AnimalController
     @GetMapping(value = "/count", produces = {"application/json"})
     public ResponseEntity<?> listAllAnimalsCount()
     {
-        return null;
+        return new ResponseEntity<>(animalService.findAnimalCount(), HttpStatus.OK);
     }
 }
